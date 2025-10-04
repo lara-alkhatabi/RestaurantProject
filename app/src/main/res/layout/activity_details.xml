@@ -104,15 +104,15 @@
             android:stepSize="0.5" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/mapbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@drawable/splash_gradient"
-            android:text="View on map" />
+            android:text="View on Map" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/sharebutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
