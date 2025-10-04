@@ -5,11 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -20,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Button loginbutton = findViewById(R.id.loginbutton);
         loginbutton.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, AboutActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ListingActivity.class);
             startActivity(intent);
         });
 
