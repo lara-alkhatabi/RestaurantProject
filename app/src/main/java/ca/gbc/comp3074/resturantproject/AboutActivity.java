@@ -17,7 +17,7 @@ public class AboutActivity extends AppCompatActivity {
 
         Button goBackButton = findViewById(R.id.gobackbutton);
          goBackButton.setOnClickListener(v -> {
-             Intent intent = new Intent(AboutActivity.this, ListingActivity.class);
+             Intent intent = new Intent(AboutActivity.this, RestListActivity.class);
              startActivity(intent);
          });
     }

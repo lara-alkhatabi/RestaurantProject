@@ -17,7 +17,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         ImageView backIcon = findViewById(R.id.backicon);
         backIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(DetailsActivity.this, ListingActivity.class);
+            Intent intent = new Intent(DetailsActivity.this, RestListActivity.class);
             startActivity(intent);
         });
 

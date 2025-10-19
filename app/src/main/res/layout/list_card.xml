@@ -8,6 +8,7 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
@@ -17,6 +18,7 @@
             android:text="La Pizza" />
 
         <TextView
+            android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -25,6 +27,7 @@
             android:text="126 Main Street, City" />
 
         <TextView
+            android:id="@+id/phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="?android:attr/textColorSecondary"
@@ -32,6 +35,7 @@
             android:text="123-156-4567" />
 
         <RatingBar
+            android:id="@+id/ratingBar"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
