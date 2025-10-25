@@ -8,12 +8,16 @@ public class Resturant {
     public String phone;
     public String email;
     public List<String> categories;
+    public List<Double> location;
 
-    public Resturant(String name, int stars, String phone, String email, List<String> categories) {
+
+    public Resturant(String name, int stars, String phone, String email, List<String> categories, List<Double> location) {
         this.name = name;
         this.stars = stars;
         this.phone = phone;
         this.email = email;
         this.categories = categories;
+        this.location = location;
+
     }
 }

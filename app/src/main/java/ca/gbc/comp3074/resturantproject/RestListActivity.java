@@ -2,11 +2,16 @@ package ca.gbc.comp3074.resturantproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,9 +21,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RestListActivity extends AppCompatActivity {
-RecyclerView recyclerView;
-List<Resturant> resturantList=new ArrayList<>();
-ResturantAdapter adapter;
+    RecyclerView recyclerView;
+    List<Resturant> resturantList=new ArrayList<>();
+    ResturantAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +43,27 @@ ResturantAdapter adapter;
         recyclerView=findViewById(R.id.restaurantList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter=new ResturantAdapter(resturantList);
+        adapter=new ResturantAdapter(this);
         recyclerView.setAdapter(adapter);
+
+        TextInputEditText searchInput = findViewById(R.id.searchInput);
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+
+        });
 
         // Load JSON from assets
         String jsonStr = loadJSONFromAsset("Resturants.json");
@@ -64,6 +88,7 @@ ResturantAdapter adapter;
 
     private void parseAndUseJSON(String jsonStr) {
         try {
+            List<Resturant> loadedList = new ArrayList<>();
             JSONArray restaurants = new JSONArray(jsonStr);
 
             for (int i = 0; i < restaurants.length(); i++) {
@@ -79,12 +104,18 @@ ResturantAdapter adapter;
                 List<String> categories = new ArrayList<>();
                 for (int j = 0; j < categoriesArray.length(); j++) {
                     categories.add(categoriesArray.getString(j));
-                    if (j < categoriesArray.length() - 1) categories.add(", ");
                 }
-                resturantList.add(new Resturant(name, stars, phone, email, categories));
+
+                JSONArray locationArray = contact.getJSONArray("location");
+                List<Double> location = new ArrayList<>();
+                for (int j = 0; j < locationArray.length(); j++) {
+                    location.add(locationArray.getDouble(j));
+                }
+
+                loadedList.add(new Resturant(name, stars, phone, email, categories, location));
 
             }
-            adapter.notifyDataSetChanged();
+            adapter.setData(loadedList);
         } catch (Exception e) {
             e.printStackTrace();
         }
