@@ -22,28 +22,45 @@ import java.util.List;
 
 public class RestListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    List<Resturant> resturantList=new ArrayList<>();
+    List<Resturant> resturantList = new ArrayList<>();
     ResturantAdapter adapter;
+
+    // 1. ADD THIS VARIABLE
+    private int loggedInUserId = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rest_list);
 
+        // 2. ADD THESE LINES TO GET AND VALIDATE THE USER ID
+        loggedInUserId = getIntent().getIntExtra("LOGGED_IN_USER_ID", -1);
+        if (loggedInUserId == -1) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
         ImageView userIcon = findViewById(R.id.userIcon);
         userIcon.setOnClickListener(v -> {
             Intent intent = new Intent(RestListActivity.this, AboutActivity.class);
+            // 3. ADD THE USER ID TO THE INTENT
+            intent.putExtra("LOGGED_IN_USER_ID", loggedInUserId);
             startActivity(intent);
         });
+
         ImageView logoutIcon = findViewById(R.id.logoutIcon);
         logoutIcon.setOnClickListener(v -> {
             Intent intent = new Intent(RestListActivity.this, LoginActivity.class);
             startActivity(intent);
         });
 
-        recyclerView=findViewById(R.id.restaurantList);
+        recyclerView = findViewById(R.id.restaurantList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter=new ResturantAdapter(this);
+        adapter = new ResturantAdapter(this);
         recyclerView.setAdapter(adapter);
 
         TextInputEditText searchInput = findViewById(R.id.searchInput);
@@ -62,7 +79,6 @@ public class RestListActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
 
             }
-
         });
 
         // Load JSON from assets

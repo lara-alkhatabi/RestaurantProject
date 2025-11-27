@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -37,7 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
-        android:text="Lara Alkhatabi"
         android:hint="Name" />
 
     <TextView
@@ -55,7 +53,6 @@
         android:id="@+id/phonenumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="514-123-4567"
         android:layout_marginHorizontal="25dp"
         android:inputType="phone"
         android:hint="Phone Number" />
@@ -75,7 +72,6 @@
         android:id="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1234 Street Name"
         android:layout_marginHorizontal="25dp"
         android:hint="Address" />
 
@@ -94,19 +90,27 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="lara.alkhatabi@example.com"
         android:layout_marginHorizontal="25dp"
         android:inputType="textEmailAddress"
         android:hint="Email" />
 
     <Button
+        android:id="@+id/savechangesbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginHorizontal="25dp"
+        android:background="#00ACC1"
+        android:text="Save Changes"
+        android:textColor="#FFFFFF" />
+
+    <Button
         android:id="@+id/gobackbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#00ACC1"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="25dp"
+        android:background="#808080"
         android:text="Go Back"
-        android:layout_margin="25dp"
         android:textColor="#FFFFFF" />
-
-
 </LinearLayout>

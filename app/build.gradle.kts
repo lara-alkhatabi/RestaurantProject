@@ -41,6 +41,17 @@ dependencies {
     implementation(libs.play.services.maps)
     implementation("com.squareup.okhttp3:okhttp:5.2.1")
     implementation("com.google.code.gson:gson:2.13.2")
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+
+    // Room components for database
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    // To use Kotlin annotation processing tool (kapt)
+    // kapt("androidx.room:room-compiler:$roomVersion")
+    // To use Java annotation processing tool (annotationProcessor)
+    annotationProcessor("androidx.room:room-compiler:$roomVersion")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
